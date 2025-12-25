@@ -107,15 +107,13 @@ class TestAddition:
         # Assert
         assert result == pytest.approx(expected)
 
-
     def test_add_too_large_value_raises_exception(self):
         calc = Calculator()
 
         with pytest.raises(InvalidInputException):
             calc.add(1_000_001, 1)
         with pytest.raises(InvalidInputException):
-            calc.add(1,1_000_001)
-
+            calc.add(1, 1_000_001)
 
     def test_add_too_small_value_raises_exception(self):
         calc = Calculator()
@@ -128,7 +126,6 @@ class TestAddition:
         result = calc.add(1_000_000, 0)
         assert result == 1_000_000
 
-
     def test_add_allows_min_boundary(self):
         calc = Calculator()
         result = calc.add(-1_000_000, 0)
@@ -139,7 +136,6 @@ class TestAddition:
         with pytest.raises(InvalidInputException):
             calc.add(1_000_001, -1_000_001)
 
-
     def test_add_strict_operation(self):
         calc = Calculator()
         assert calc.add(10, 1) == 11
@@ -149,7 +145,6 @@ class TestAddition:
         calc = Calculator()
         assert calc.add(10, 1) == 11
 
-
     def test_add_out_of_range_exception_message(self):
         calc = Calculator()
 
@@ -157,7 +152,6 @@ class TestAddition:
             calc.add(1_000_001, 1)
 
         assert "outside the valid range" in str(excinfo.value)
-
 
 
 class TestSubtraction:
@@ -181,8 +175,6 @@ class TestSubtraction:
         calc = Calculator()
         assert calc.subtract(10, 3) == 7
         assert calc.subtract(3, 10) == -7
-
-
 
     def test_subtract_too_large_value_raises_exception(self):
         calc = Calculator()
@@ -229,7 +221,6 @@ class TestMultiplication:
         assert calc.multiply(4, 3) == 12
         assert calc.multiply(3, 4) == 12
 
-    
     def test_multiply_out_of_range_raises_exception(self):
         calc = Calculator()
         with pytest.raises(InvalidInputException):
@@ -275,8 +266,6 @@ class TestDivision:
         assert calc.divide(8, 2) == 4
         assert calc.divide(2, 8) == 0.25
 
-
-
     def test_divide_out_of_range_raises_exception(self):
         calc = Calculator()
         with pytest.raises(InvalidInputException):
@@ -293,7 +282,7 @@ class TestDivision:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.divide(1_000_001, -1_000_001)
-    
+
     def test_divide_strict_operation(self):
         calc = Calculator()
         assert calc.divide(10, 1) == 10
@@ -309,6 +298,3 @@ class TestDivision:
         # Act
         result = calc.divide(a, b)
         assert result == expected
-
-
-
